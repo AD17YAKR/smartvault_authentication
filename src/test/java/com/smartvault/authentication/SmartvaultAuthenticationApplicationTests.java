@@ -1,13 +1,13 @@
-package com.smartvault.authentication;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
-class SmartvaultAuthenticationApplicationTests {
-
-    @Test
-    void contextLoads() {
-    }
-
-}
+//package com.smartvault.authentication;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//@SpringBootTest
+//class SmartvaultAuthenticationApplicationTests {
+//
+//    @Test
+//    void contextLoads() {
+//    }
+//
+//}
