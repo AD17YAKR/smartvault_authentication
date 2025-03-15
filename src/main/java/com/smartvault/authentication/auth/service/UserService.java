@@ -1,6 +1,5 @@
 package com.smartvault.authentication.auth.service;
 
-
 import com.smartvault.authentication.auth.dto.UserDTO;
 import com.smartvault.authentication.auth.exception.UserAlreadyExistsException;
 import com.smartvault.authentication.auth.exception.UserNotFoundException;

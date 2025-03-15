@@ -50,7 +50,7 @@ The Auth Service handles the following core responsibilities:
 
 ### Prerequisites
 
-- **Java 11** (or later)
+- **Java 17** (or later)
 - **Maven** or **Gradle** for building the project
 - **PostgreSQL** (or your preferred relational database) for persisting user data
 - A development environment (e.g., IntelliJ IDEA, Eclipse)
