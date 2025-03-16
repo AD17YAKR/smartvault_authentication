@@ -8,7 +8,6 @@ WORKDIR /app
 COPY mvnw .
 COPY .mvn .mvn
 COPY pom.xml .
-COPY keystore.p12 /app/keystore.p12
 
 # Copy the source code
 COPY src src
@@ -27,7 +26,7 @@ COPY --from=0 /app/target/*.jar app.jar
 
 
 # Expose the port your application runs on (typically 8080)
-EXPOSE 8080
+EXPOSE 8081
 
 # Command to run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]

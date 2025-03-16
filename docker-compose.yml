@@ -1,17 +1,16 @@
-version: '3.8'
+version: "3.8"
 services:
   app:
     build: .
-    volumes:
-      - ./keystore.p12:/app/keystore.p12
     ports:
-      - "8080:8080"
+      - "8081:8081"
     environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      # You can also override the DB URL here if needed
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/smartvault
-      - SPRING_DATASOURCE_USERNAME=smartvaultuser
-      - SPRING_DATASOURCE_PASSWORD=123456
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
+      - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
+      - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRATION_MS=${JWT_EXPIRATION_MS}
     depends_on:
       - db
     restart: unless-stopped
@@ -23,5 +22,5 @@ services:
       - POSTGRES_USER=smartvaultuser
       - POSTGRES_PASSWORD=123456
     ports:
-      - "5433:5432"
+      - "5434:5432"
     restart: unless-stopped
