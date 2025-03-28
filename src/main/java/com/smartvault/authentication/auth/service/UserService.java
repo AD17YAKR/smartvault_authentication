@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @Service
 public class UserService {
@@ -58,5 +59,13 @@ public class UserService {
         userDTO.setJwtToken(jwtUtils.generateJwtToken(userDTO));
         userDTO.setPassword(null);
         return userDTO;
+    }
+
+    public void validateToken(Map<String, String> request) {
+        try {
+            jwtUtils.validateToken(request.get("token"));
+        } catch (Exception e) {
+            throw e;
+        }
     }
 }

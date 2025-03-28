@@ -1,6 +1,8 @@
 package com.smartvault.authentication.auth.utils;
 
 import com.smartvault.authentication.auth.dto.UserDTO;
+import com.smartvault.authentication.auth.exception.AuthException;
+
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
@@ -34,6 +36,35 @@ public class JwtUtils {
                 .expiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
                 .signWith(jwtKey)
                 .compact();
+    }
+
+    public void validateToken(String token) {
+        try {
+            Jwts.parser()
+                    .setSigningKey(jwtKey)
+                    .build()
+                    .parseClaimsJws(token);
+        } catch (Exception e) {
+            throw new AuthException("Invalid JWT token: " + e.getMessage());
+        }
+    }
+
+    public String getUsernameFromToken(String token) {
+        return Jwts.parser()
+                .setSigningKey(jwtKey)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+    }
+
+    public String getRoleFromToken(String token) {
+        return Jwts.parser()
+                .setSigningKey(jwtKey)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .get("role", String.class);
     }
 
 }
